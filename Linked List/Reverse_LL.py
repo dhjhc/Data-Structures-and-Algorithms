@@ -11,15 +11,15 @@ class Node:
         self.next = None
 
 
-def printReverse(head):
-    prev = None
-    current = head
-    while current:
-        next = current.next
-        current.next = prev
-        prev = current
-        current = next
-    return prev
+def printReverse(head) :
+    if head is None or head.next is None:
+        return head,head
+    smallhead,smalltail= printReverse(head.next)
+    
+    smalltail.next=head
+    head.next=None
+    return smallhead,head
+
     ''' 
      if head == None or head.next == None:
         return head
